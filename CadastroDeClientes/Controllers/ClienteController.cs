@@ -9,8 +9,18 @@ namespace CadastroDeClientes.Controllers
             return View();
         }
 
-        public IActionResult Cadastrar(){
-        return View();
+        public IActionResult Criar() {
+            return View();
+        }
+
+        public IActionResult Editar()
+        {
+            return View();
+        }
+
+        public IActionResult ConfirmarExclusao()
+        {
+            return View();
         }
     }
 }

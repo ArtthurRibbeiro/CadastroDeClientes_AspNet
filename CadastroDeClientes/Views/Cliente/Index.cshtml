@@ -1,9 +1,69 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Listagem de clientes";
 }
 
-<a type="button" role="button "class="btn btn-primary" asp-controller="Cliente" asp-action="Cadastrar" >Cadastrar novo cliente</a>
+<a type="button" role="button "class="btn btn-primary" asp-controller="Cliente" asp-action="Criar" >Cadastrar novo cliente</a>
+
+<div class="text-center">
+
+    <h1>Listagem de Clientes</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Dt.Inclusão</th>
+                <th scope="col">Dt.Alteração</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>mdo</td>
+                <td>mdo</td>
+                <td>mdo</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <a role="button" asp-controller="Cliente" asp-action="Editar" class="btn btn-outline-primary">Editar</a>
+                        <a role="button" asp-controller="Cliente" asp-action="ConfirmarExclusao" class="btn btn-outline-danger">Apagar</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>fat</td>
+                <td>fat</td>
+                <td>fat</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button type="button" class="btn btn-outline-primary">Left</button>
+                        <button type="button" class="btn btn-outline-danger">Right</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>twitter</td>
+                <td>twitter</td>
+                <td>twitter</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button type="button" class="btn btn-outline-primary">Left</button>
+                        <button type="button" class="btn btn-outline-danger">Right</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 
