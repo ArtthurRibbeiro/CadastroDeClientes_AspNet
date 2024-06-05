@@ -29,3 +29,35 @@ body {
     white-space: nowrap;
     line-height: 60px;
 }
+
+.table-container {
+    max-width: 100%; /* Ajuste a altura conforme necessário */
+    overflow-y: auto;
+}
+
+.fixed-column {
+    position: sticky;
+    right: 0;
+    background-color: white !important;
+    z-index: 1;
+}
+
+.fixed-header {
+    position: sticky;
+    right: 0;
+    background-color: white !important;
+    z-index: 2;
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    color:white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}

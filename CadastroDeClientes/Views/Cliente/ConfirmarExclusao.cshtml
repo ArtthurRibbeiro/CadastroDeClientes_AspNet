@@ -1,10 +1,12 @@
-﻿@{
+﻿@model ClienteModel
+
+@{
     ViewData["Title"] = "Confirmaçao de exclusão";
 }
 
 <div class="text-center">
-    <h3>Deseja realmente apagar o contato?</h3>
-    <a role="button" class="btn btn-secondary" asp-asp-controller="Cliente" asp-action="Index">cancelar</a>
-    <button type="button" class="btn btn-danger">Excluir</button>
+    <h3>Deseja realmente apagar o cliente @Model.Codigo?</h3>
+    <a role="button" class="btn btn-secondary" asp-controller="Cliente" asp-action="Index">cancelar</a>
+    <a role="button" class="btn btn-danger" asp-route-id="@Model.Id" asp-controller="Cliente" asp-action="Apagar">Excluir</a>
 
 </div>

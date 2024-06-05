@@ -1,10 +1,22 @@
+using CadastroDeClientes.Data;
+using CadastroDeClientes.Repositorio;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
 builder.Services.AddRazorPages()
         .AddRazorRuntimeCompilation();
+
+//Conexão com banco
+
+var provider = builder.Services.BuildServiceProvider();
+var configuration = provider.GetRequiredService<IConfiguration>();
+
+builder.Services.AddDbContext<BancoContext>(item => item.UseSqlServer(configuration.GetConnectionString("DataBase")));
+builder.Services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
 
 
 
