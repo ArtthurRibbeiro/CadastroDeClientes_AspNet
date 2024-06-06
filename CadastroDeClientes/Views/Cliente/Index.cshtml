@@ -17,12 +17,14 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Codigo</th>
+                    <th scope="col">Nome/Razao social</th>
+                    <th scope="col">Nome abreviado/fantasia</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Telefone</th>
 
                     <th scope="col">Tipo</th>
                     <th scope="col">Cpf/Cnpj</th>
                     <th scope="col">Rg/Ie</th>
-                    <th scope="col">Nome/Razao social</th>
-                    <th scope="col">Nome abreviado/fantasia</th>
 
                     <th scope="col">Cep</th>
                     <th scope="col">Logradouro</th>
@@ -33,8 +35,6 @@
                     <th scope="col">UnidadeFederativa</th>
 
 
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Telefone</th>
                     <th scope="col">Dt.Inclusão</th>
                     <th scope="col">Dt.Alteração</th>
                     <th scope="col" class="fixed-header"></th>
@@ -48,13 +48,15 @@
                     foreach(ClienteModel cliente in Model){
                     <tr>
                         <th scope="row">@cliente.Id</th>
-                        <td>@cliente.Codigo</td>
+                            <td>@cliente.Codigo</td>
+                            <td>@cliente.NomeRazaoSocial</td>
+                            <td>@cliente.NomeAbreviadoFantasia</td>
+                            <td>@cliente.Email</td>
+                            <td>@cliente.Telefone</td>
 
                             <td>@cliente.Tipo</td>
                             <td>@cliente.CpfCnpj</td>
                             <td>@cliente.RgIe</td>
-                            <td>@cliente.NomeRazaoSocial</td>
-                            <td>@cliente.NomeAbreviadoFantasia</td>
 
                             <td>@cliente.Cep</td>
                             <td>@cliente.Logradouro</td>
@@ -64,10 +66,9 @@
                             <td>@cliente.Municipio</td>
                             <td>@cliente.UnidadeFederativa</td>
 
-                        <td>@cliente.Telefone</td>
-                        <td>@cliente.Email</td>
                         <td>@cliente.Inclusao</td>
                         <td>@cliente.Alteracao</td>
+
                         <td class="fixed-column">
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                             <a role="button" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar" class="btn btn-outline-primary">Editar</a>

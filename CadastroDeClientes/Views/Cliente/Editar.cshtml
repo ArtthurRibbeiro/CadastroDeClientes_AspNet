@@ -10,12 +10,13 @@
 
     <input type="hidden" asp-for="Id" class="form-control">
 
-
+    @Html.ValidationMessageFor(o => o.Codigo, "", new { @class = "text-danger" })
     <div class="input-group mb-3">
         <span class="input-group-text">Código</span>
         <input type="text" asp-for="Codigo" class="form-control">
-
     </div>
+
+    @Html.ValidationMessageFor(o => o.NomeRazaoSocial, "", new { @class = "text-danger" })
 
     <div class="input-group mb-3">
         <span class="input-group-text">Nome/Razao social</span>
@@ -24,6 +25,8 @@
         <input type="text" asp-for="NomeAbreviadoFantasia" class="form-control">
     </div>
 
+    @Html.ValidationMessageFor(o => o.Email, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.Telefone, "", new { @class = "text-danger" })
 
     <div class="input-group mb-3">
         <span class="input-group-text">E-mail</span>
@@ -32,6 +35,8 @@
         <input type="text" asp-for="Telefone" class="form-control">
     </div>
 
+    @Html.ValidationMessageFor(o => o.Tipo, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.CpfCnpj, "", new { @class = "text-danger" })
 
     <div class="input-group mb-3">
         <select asp-for="Tipo" class="input-group-text" aria-label="Default select example">
@@ -41,20 +46,25 @@
         </select>
         <input type="text" asp-for="CpfCnpj" class="form-control">
 
-    </div>
-    <div class="input-group mb-3">
         <span class="input-group-text">Rg/Ie</span>
         <input type="text" asp-for="RgIe" class="form-control">
     </div>
+    <div class="input-group mb-3">
+    </div>
 
+
+    @Html.ValidationMessageFor(o => o.Cep, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.Logradouro, "", new { @class = "text-danger" })
 
 
     <div class="input-group mb-3">
-        <span class="input-group-text">Cep</span>
+        <span class="input-group-text">CEP</span>
         <input type="text" asp-for="Cep" class="form-control">
         <span class="input-group-text">Logradouro</span>
         <input type="text" asp-for="Logradouro" class="form-control">
     </div>
+
+    @Html.ValidationMessageFor(o => o.Numero, "", new { @class = "text-danger" })
 
     <div class="input-group mb-3">
         <span class="input-group-text">Número</span>
@@ -62,6 +72,11 @@
         <span class="input-group-text">Complemento</span>
         <input type="text" asp-for="Complemento" class="form-control">
     </div>
+
+    @Html.ValidationMessageFor(o => o.Bairro, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.Municipio, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.UnidadeFederativa, "", new { @class = "text-danger" })
+
 
     <div class="input-group mb-3">
         <span class="input-group-text">Bairro</span>
@@ -71,6 +86,10 @@
         <span class="input-group-text">UnidadeFederativa</span>
         <input type="text" asp-for="UnidadeFederativa" class="form-control">
     </div>
+
+
+    <input type="hidden" asp-for="Inclusao" class="form-control">
+    <input type="hidden" asp-for="Alteracao" class="form-control">
 
 
     <button type="submit" class="btn btn-primary">Alterar</button>

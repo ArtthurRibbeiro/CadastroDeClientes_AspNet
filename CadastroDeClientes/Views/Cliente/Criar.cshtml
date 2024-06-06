@@ -6,71 +6,173 @@
 
 <h3>Adicionar novo cliente</h3>
 
-    <form asp-controller="Cliente" asp-action="Criar" method="post">
+<form asp-controller="Cliente" asp-action="Criar" method="post">
 
-        <div class="input-group mb-3">
-        <span class="input-group-text" >Código</span>
+    @Html.ValidationMessageFor(o => o.Codigo, "", new { @class = "text-danger" })
+    <div class="input-group mb-3">
+        <span class="input-group-text">Código</span>
         <input type="text" asp-for="Codigo" class="form-control">
-
-        </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text">Nome/Razao social</span>
-        <input type="text" asp-for="NomeRazaoSocial" class="form-control">
-        <span class="input-group-text">Nome abreviado/fantasia</span>
-        <input type="text" asp-for="NomeAbreviadoFantasia" class="form-control">
     </div>
 
+    @Html.ValidationMessageFor(o => o.Tipo, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.CpfCnpj, "", new { @class = "text-danger" })
 
     <div class="input-group mb-3">
-        <span class="input-group-text">E-mail</span>
-        <input type="text" asp-for="Email" class="form-control">
-        <span class="input-group-text">Telefone</span>
-        <input type="text" asp-for="Telefone" class="form-control">
-    </div>
-
-
-    <div class="input-group mb-3">
-        <select asp-for="Tipo" class="input-group-text" aria-label="Default select example">
+        <select asp-for="Tipo" id="tipo" class="input-group-text" aria-label="Default select example">
             <option selected>Selecione</option>
-            <option value="CPF">CPF</option>
-            <option value="CNPJ">CNPJ</option>
+            <option value="PF">CPF</option>
+            <option value="PJ">CNPJ</option>
         </select>
-        <input type="text" asp-for="CpfCnpj" class="form-control">
-        
-    </div>
-    <div class="input-group mb-3">
+        <input type="text" asp-for="CpfCnpj" id="documento" class="form-control">
+
         <span class="input-group-text">Rg/Ie</span>
         <input type="text" asp-for="RgIe" class="form-control">
     </div>
+
+    @Html.ValidationMessageFor(o => o.NomeRazaoSocial, "", new { @class = "text-danger" })
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Nome/Razao social</span>
+        <input type="text" asp-for="NomeRazaoSocial" id="nomeRazaoSocial" class="form-control">
+        <span class="input-group-text">Nome abreviado/fantasia</span>
+        <input type="text" asp-for="NomeAbreviadoFantasia" id="nomeFantasia" class="form-control">
+    </div>
+
+    @Html.ValidationMessageFor(o => o.Email, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.Telefone, "", new { @class = "text-danger" })
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">E-mail</span>
+        <input type="text" asp-for="Email" id="email" class="form-control">
+        <span class="input-group-text">Telefone</span>
+        <input type="text" asp-for="Telefone" id="telefone" class="form-control">
+    </div>
+
     
+    <div class="input-group mb-3">
+    </div>
+
+
+    @Html.ValidationMessageFor(o => o.Cep, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.Logradouro, "", new { @class = "text-danger" })
 
 
     <div class="input-group mb-3">
-        <span class="input-group-text">Cep</span>
-        <input type="text" asp-for="Cep" class="form-control">
+        <span class="input-group-text">CEP</span>
+        <input type="text" asp-for="Cep" id="cep" class="form-control">
         <span class="input-group-text">Logradouro</span>
-        <input type="text" asp-for="Logradouro" class="form-control">
+        <input type="text" asp-for="Logradouro" id="rua" class="form-control">
     </div>
+
+    @Html.ValidationMessageFor(o => o.Numero, "", new { @class = "text-danger" })
 
     <div class="input-group mb-3">
         <span class="input-group-text">Número</span>
-        <input type="text" asp-for="Numero" class="form-control">
+        <input type="text" asp-for="Numero" id="numero" class="form-control">
         <span class="input-group-text">Complemento</span>
-        <input type="text" asp-for="Complemento" class="form-control">
+        <input type="text" asp-for="Complemento" id="complemento" class="form-control">
     </div>
+
+    @Html.ValidationMessageFor(o => o.Bairro, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.Municipio, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(o => o.UnidadeFederativa, "", new { @class = "text-danger" })
+
 
     <div class="input-group mb-3">
         <span class="input-group-text">Bairro</span>
-        <input type="text" asp-for="Bairro" class="form-control">
+        <input type="text" asp-for="Bairro" id="bairro" class="form-control">
         <span class="input-group-text">Municipio</span>
-        <input type="text" asp-for="Municipio" class="form-control">
+        <input type="text" asp-for="Municipio" id="cidade" class="form-control">
         <span class="input-group-text">UnidadeFederativa</span>
-        <input type="text" asp-for="UnidadeFederativa" class="form-control">
+        <input type="text" asp-for="UnidadeFederativa" id="uf" class="form-control">
     </div>
+
+
+    <input type="hidden" asp-for="Inclusao" class="form-control">
+    <input type="hidden" asp-for="Alteracao" class="form-control">
 
 
     <button type="submit" class="btn btn-primary">Adicionar</button>
     <a class="btn btn-secondary" role="button" asp-controller="Cliente" asp-action="Index">Voltar</a>
 
-    </form>
+</form>
+
+
+
+@section Scripts {
+    <script>
+
+        function buscaCep(cep) {
+            if (cep.length === 8) {
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+
+                            console.log(data.cep)
+
+                            
+
+
+                            document.getElementById('rua').value = data.logradouro;
+                            document.getElementById('bairro').value = data.bairro;
+                            document.getElementById('cidade').value = data.localidade;
+                            document.getElementById('uf').value = data.uf;
+
+
+                        } else {
+                            alert('CEP não encontrado.');
+                        }
+                    })
+                    .catch(error => console.error('Erro ao buscar CEP:', error));
+            }
+
+        }
+
+
+        document.getElementById('cep').addEventListener('blur', function () {
+            buscaCep(this.value.replace(/\D/g, ''))
+        });
+
+
+        document.getElementById('documento').addEventListener('blur', function () {
+            var documento = this.value.replace(/\D/g, '');
+
+            if (document.getElementById('tipo').value == "PJ" && documento.length === 14) {
+
+                fetch(`https://localhost:44391/api/proxy/cnpj/${documento}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            console.log(data.fantasia)
+
+
+
+                            document.getElementById('nomeRazaoSocial').value = data.nome;
+
+
+                            document.getElementById('nomeFantasia').value = data.fantasia;
+                            document.getElementById('email').value = data.email;
+                            document.getElementById('telefone').value = data.telefone;
+
+
+                            document.getElementById('cep').value = data.cep;
+                            buscaCep(data.cep.replace(/\D/g, ''))
+                            document.getElementById('numero').value = data.numero;
+                            document.getElementById('complemento').value = data.complemento;
+
+                            
+
+
+
+
+                        } else {
+                            alert('CNPJ não encontrado.');
+                        }
+                    })
+                    .catch(error => console.error('Erro ao buscar CNPJ:', error));
+
+            }
+        });
+    </script>
+}

@@ -10,6 +10,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages()
         .AddRazorRuntimeCompilation();
 
+builder.Services.AddHttpClient();
+
 //Conexão com banco
 
 var provider = builder.Services.BuildServiceProvider();

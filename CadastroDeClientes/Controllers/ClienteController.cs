@@ -49,25 +49,43 @@ namespace CadastroDeClientes.Controllers
         [HttpPost]
         public IActionResult Criar(ClienteModel cliente){
 
-            cliente.Inclusao = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
-            cliente.Alteracao = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+            cliente.Inclusao = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+            cliente.Alteracao = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
 
+            foreach (var modelState in ViewData.ModelState.Values)
+            {
+                foreach (var error in modelState.Errors)
+                {
+                    System.Diagnostics.Debug.WriteLine(error.ErrorMessage);
+                }
+            }
 
-            _clienteRepository.Adicionar(cliente);
+            if (ModelState.IsValid)
+            {
+                _clienteRepository.Adicionar(cliente);
+                return RedirectToAction("Index");
 
-            return RedirectToAction("Index");
+            }
+
+            return View(cliente);
+            
         }
 
 
         [HttpPost]
         public IActionResult Editar(ClienteModel cliente)
         {
+            cliente.Alteracao = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
 
-            cliente.Alteracao = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+            if (ModelState.IsValid)
+            {
+                _clienteRepository.Editar(cliente);
+                return RedirectToAction("Index");
 
-            _clienteRepository.Editar(cliente);
+            }
 
-            return RedirectToAction("Index");
+            return View(cliente);
+
         }
 
     }
