@@ -4,9 +4,8 @@
     ViewData["Title"] = "Listagem de clientes";
 }
 
-<a type="button" role="button "class="btn btn-primary" asp-controller="Cliente" asp-action="Criar" >Cadastrar novo cliente</a>
 
-<div class="text-center">
+
 
     @if (TempData["MensagemConfirm"] != null)
     {
@@ -26,9 +25,112 @@
         </div>
     }
 
-
-
+<div class="text-center">
     <h1>Listagem de Clientes</h1>
+    
+</div>
+
+<div>
+    <div class="dropdown">
+    <a type="button" role="button " class="btn btn-primary" asp-controller="Cliente" asp-action="Criar">Cadastrar novo cliente</a>
+        <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Selecionar campos a exibir
+        </button>
+        <ul class="dropdown-menu">
+
+            
+            <li>
+                <input type="checkbox" id="codigo" name="codigo" checked>
+                <label for="codigo">Código</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="NomeRazaoSocial" name="NomeRazaoSocial" checked>
+                <label for="NomeRazaoSocial">Nome/Razao Social</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+
+    
+<div class="text-center">
 
     <div class="table-container">
 
