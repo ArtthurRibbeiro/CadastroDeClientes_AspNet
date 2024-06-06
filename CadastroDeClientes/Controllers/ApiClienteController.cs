@@ -1,8 +1,9 @@
-﻿using AspNetCore;
+﻿
 using CadastroDeClientes.Helpers;
 using CadastroDeClientes.Models;
 using CadastroDeClientes.Repositorio;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CadastroDeClientes.Controllers
@@ -13,20 +14,37 @@ namespace CadastroDeClientes.Controllers
     {
         private readonly IClienteRepositorio _clienteRepositorio;
 
-        [HttpGet("todos")]
-        public List<ClienteModel> ListarTodos()
+        public ApiClienteController(IClienteRepositorio clienteRepositorio)
+        {
+            _clienteRepositorio = clienteRepositorio;
+        }
+
+        [HttpGet("")]
+        public ActionResult<List<ClienteModel> > ListarTodos()
         {
             List<ClienteModel> clientes = _clienteRepositorio.BuscarTodos();
-            return clientes;   
+                if (clientes == null)
+            {
+                return NotFound();
+            }
+            return Ok(clientes);
 
         }
-        [HttpGet("id/{id}")]
-        public ClienteModel BuscarPorId(int id) {
 
-            return _clienteRepositorio.BuscarPorId(id);
+        [HttpGet("{id}")]
+        public ActionResult<ClienteModel>  BuscarPorId(int id)
         {
+            var cliente = _clienteRepositorio.BuscarPorId(id);
+            if (cliente == null)
+            {
+                return NotFound(); 
+            }
+            return Ok(cliente);
 
         }
+
+            /*
+            
         [HttpGet("codigo/{codigo}")]
         public ClienteModel BuscarPorCodigo(String codigo)
         {
@@ -42,35 +60,66 @@ namespace CadastroDeClientes.Controllers
         {
 
         }
-        [HttpPost("")]
-        public ActionResult<ClienteModel>  Criar(ClienteModel cliente)
-        {
+
+            */
+            [HttpPost("")]
+            public ActionResult<ClienteModel> Criar(ClienteModel cliente)
+            {
                 cliente.Inclusao = DataHelper.DataFormatada();
                 cliente.Alteracao = DataHelper.DataFormatada();
 
-                try
-                {
-                    if (ModelState.IsValid)
-                    {
+                if (ModelState.IsValid) {
+                    try {
                         _clienteRepositorio.Adicionar(cliente);
-                        return cliente;
+                        return CreatedAtAction(nameof(BuscarPorId), new { id = cliente.Id }, cliente);
+                    }
+                    catch (Exception ex)
+                    {
+                        return StatusCode(500, $"Erro interno ao processar a requisição: {ex.Message}");
                     }
 
-                    return
+                }
+                return BadRequest(ModelState);
+
+            }
+
+
+            [HttpPut("{id}")]
+            public ActionResult Alterar(int id, ClienteModel cliente)
+            {
+                if (id != cliente.Id)
+                {
+                    return BadRequest("ID`s Não correspondem");
                 }
 
+                try
+                {
+                    _clienteRepositorio.Editar(cliente);
+                    return NoContent();
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, $"Erro interno ao processar a requisição: {ex.Message}");
+                }
+            }
+
+            public ActionResult Deletar(int id)
+            {
+                var cliente = _clienteRepositorio.BuscarPorId(id);
+                if (cliente == null)
+                {
+                    return NotFound();
+                }
+                try
+                {
+                    _clienteRepositorio.Excluir(id);
+                    return NoContent();
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, $"Erro interno ao processar a requisição: {ex.Message}");
+                }
+            }
 
         }
-        [HttpPut("")]
-        public ClienteModel Alterar(ClienteModel cliente)
-        {
-
-        }
-
-        public bool Deletar(int id)
-        {
-            return true;
-        }
-        
     }
-}
