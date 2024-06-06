@@ -2,6 +2,20 @@
 
 $(document).ready(function () {
 
+   // let table = new DataTable('#talebaListagem');
+
+ 
+        $('#talebaListagem').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
+            },
+            "pageLength": 5, // Número de itens exibidos por página
+            "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]], // Opções de quantidade de itens por página
+        });
+
+
+    
+
     // Função para fechar o alerta
     $('.close-alert').click(function () {
         $('.alert').hide('hide');
