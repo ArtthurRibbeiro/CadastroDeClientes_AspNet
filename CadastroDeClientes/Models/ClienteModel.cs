@@ -7,7 +7,7 @@ namespace CadastroDeClientes.Models
 
         public int Id { get; set; }
         [Required(ErrorMessage = "Digite o Código do Cliente")]
-        public int? Codigo { get; set; }
+        public String Codigo { get; set; }
         [Required(ErrorMessage = "Informe o tipo de documento do Cliente")]
         public String Tipo { get; set; }
         [Required(ErrorMessage = "Digite o documento do Cliente do tipo informado ao lado")]
@@ -37,10 +37,8 @@ namespace CadastroDeClientes.Models
         [Required(ErrorMessage = "Digite o Telefone do Cliente")]
         [Phone(ErrorMessage = "Número inválido informado")]
         public String Telefone { get; set; }
-        [Required]
-        public String Inclusao { get; set; }
-        [Required]
-        public String Alteracao { get; set; }
+        public String? Inclusao { get; set; }
+        public String? Alteracao { get; set; }
 
 
     }

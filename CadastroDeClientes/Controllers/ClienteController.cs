@@ -41,8 +41,20 @@ namespace CadastroDeClientes.Controllers
 
         public IActionResult Apagar(int id)
         {
+            try
+            {
             _clienteRepository.Excluir(id);
+
+                TempData["MensagemConfirm"] = "Registro deletado com sucesso";
             return RedirectToAction("Index");
+
+            } catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Falha ao deletar um registro, Erro: {ex.Message}";
+                return RedirectToAction("Index");
+            }
+
+            
         }
 
 
@@ -52,6 +64,27 @@ namespace CadastroDeClientes.Controllers
             cliente.Inclusao = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
             cliente.Alteracao = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
 
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _clienteRepository.Adicionar(cliente);
+
+
+                    TempData["MensagemConfirm"] = "Cliente Cadastrado com sucesso";
+                    return RedirectToAction("Index");
+
+                }
+
+                return View(cliente);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Falha no cadastro de Cliente, Erro: {ex.Message}";
+                return RedirectToAction("Index");
+
+            }
+
             foreach (var modelState in ViewData.ModelState.Values)
             {
                 foreach (var error in modelState.Errors)
@@ -60,14 +93,7 @@ namespace CadastroDeClientes.Controllers
                 }
             }
 
-            if (ModelState.IsValid)
-            {
-                _clienteRepository.Adicionar(cliente);
-                return RedirectToAction("Index");
-
-            }
-
-            return View(cliente);
+           
             
         }
 
@@ -77,14 +103,24 @@ namespace CadastroDeClientes.Controllers
         {
             cliente.Alteracao = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
 
-            if (ModelState.IsValid)
+            try
             {
-                _clienteRepository.Editar(cliente);
+                if (ModelState.IsValid)
+                {
+                    _clienteRepository.Editar(cliente);
+
+                    TempData["MensagemConfirm"] = "Registro editado com sucesso";
+                    return RedirectToAction("Index");
+
+                }
+
+                return View(cliente);
+            }catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Falha no cadastro de Cliente, Erro: {ex.Message}";
                 return RedirectToAction("Index");
 
             }
-
-            return View(cliente);
 
         }
 

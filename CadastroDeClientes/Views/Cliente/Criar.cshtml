@@ -88,7 +88,7 @@
     </div>
 
 
-    <input type="hidden" asp-for="Inclusao" class="form-control">
+    <input type="hidden"  asp-for="Inclusao" class="form-control">
     <input type="hidden" asp-for="Alteracao" class="form-control">
 
 
@@ -97,82 +97,3 @@
 
 </form>
 
-
-
-@section Scripts {
-    <script>
-
-        function buscaCep(cep) {
-            if (cep.length === 8) {
-                fetch(`https://viacep.com.br/ws/${cep}/json/`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (!data.erro) {
-
-                            console.log(data.cep)
-
-                            
-
-
-                            document.getElementById('rua').value = data.logradouro;
-                            document.getElementById('bairro').value = data.bairro;
-                            document.getElementById('cidade').value = data.localidade;
-                            document.getElementById('uf').value = data.uf;
-
-
-                        } else {
-                            alert('CEP não encontrado.');
-                        }
-                    })
-                    .catch(error => console.error('Erro ao buscar CEP:', error));
-            }
-
-        }
-
-
-        document.getElementById('cep').addEventListener('blur', function () {
-            buscaCep(this.value.replace(/\D/g, ''))
-        });
-
-
-        document.getElementById('documento').addEventListener('blur', function () {
-            var documento = this.value.replace(/\D/g, '');
-
-            if (document.getElementById('tipo').value == "PJ" && documento.length === 14) {
-
-                fetch(`https://localhost:44391/api/proxy/cnpj/${documento}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (!data.erro) {
-                            console.log(data.fantasia)
-
-
-
-                            document.getElementById('nomeRazaoSocial').value = data.nome;
-
-
-                            document.getElementById('nomeFantasia').value = data.fantasia;
-                            document.getElementById('email').value = data.email;
-                            document.getElementById('telefone').value = data.telefone;
-
-
-                            document.getElementById('cep').value = data.cep;
-                            buscaCep(data.cep.replace(/\D/g, ''))
-                            document.getElementById('numero').value = data.numero;
-                            document.getElementById('complemento').value = data.complemento;
-
-                            
-
-
-
-
-                        } else {
-                            alert('CNPJ não encontrado.');
-                        }
-                    })
-                    .catch(error => console.error('Erro ao buscar CNPJ:', error));
-
-            }
-        });
-    </script>
-}
