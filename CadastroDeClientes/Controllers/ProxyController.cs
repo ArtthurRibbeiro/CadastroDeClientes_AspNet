@@ -17,7 +17,6 @@ namespace CadastroDeClientes.Controllers
 
 
         [HttpGet("cnpj/{cnpj}")]
-
         public async Task<IActionResult> GetCnpjInfo(string cnpj)
         {
             var response = await _httpClient.GetAsync($"https://receitaws.com.br/v1/cnpj/{cnpj}");

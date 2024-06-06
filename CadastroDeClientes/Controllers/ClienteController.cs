@@ -1,4 +1,5 @@
-﻿using CadastroDeClientes.Models;
+﻿using CadastroDeClientes.Helpers;
+using CadastroDeClientes.Models;
 using CadastroDeClientes.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
@@ -61,8 +62,10 @@ namespace CadastroDeClientes.Controllers
         [HttpPost]
         public IActionResult Criar(ClienteModel cliente){
 
-            cliente.Inclusao = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
-            cliente.Alteracao = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+            
+
+            cliente.Inclusao = DataHelper.DataFormatada();;
+            cliente.Alteracao = DataHelper.DataFormatada();;
 
             try
             {
@@ -85,15 +88,6 @@ namespace CadastroDeClientes.Controllers
 
             }
 
-            foreach (var modelState in ViewData.ModelState.Values)
-            {
-                foreach (var error in modelState.Errors)
-                {
-                    System.Diagnostics.Debug.WriteLine(error.ErrorMessage);
-                }
-            }
-
-           
             
         }
 
@@ -101,7 +95,7 @@ namespace CadastroDeClientes.Controllers
         [HttpPost]
         public IActionResult Editar(ClienteModel cliente)
         {
-            cliente.Alteracao = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+            cliente.Alteracao = DataHelper.DataFormatada();
 
             try
             {
