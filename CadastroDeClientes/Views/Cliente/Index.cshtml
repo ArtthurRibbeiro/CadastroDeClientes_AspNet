@@ -1,0 +1,216 @@
+﻿@model List<ClienteModel>
+
+@{
+    ViewData["Title"] = "Listagem de clientes";
+}
+
+
+
+
+    @if (TempData["MensagemConfirm"] != null)
+    {
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemConfirm"]
+    </div>
+
+        
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+<div class="text-center">
+    <h1>Listagem de Clientes</h1>
+    
+</div>
+
+<div>
+    <div class="dropdown">
+    <a type="button" role="button " class="btn btn-primary" asp-controller="Cliente" asp-action="Criar">Cadastrar novo cliente</a>
+        <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Selecionar campos a exibir
+        </button>
+        <ul class="dropdown-menu">
+
+            
+            <li>
+                <input type="checkbox" id="codigo" name="codigo" checked>
+                <label for="codigo">Código</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="NomeRazaoSocial" name="NomeRazaoSocial" checked>
+                <label for="NomeRazaoSocial">Nome/Razao Social</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+            
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="campo1" name="campo1" checked>
+                <label for="campo1">campo1</label>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+
+    
+<div class="text-center">
+
+    <div class="table-container">
+
+        <table id="talebaListagem" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nome/Razao social</th>
+                    <th scope="col">Nome abreviado/fantasia</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Telefone</th>
+
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Cpf/Cnpj</th>
+                    <th scope="col">Rg/Ie</th>
+
+                    <th scope="col">Cep</th>
+                    <th scope="col">Logradouro</th>
+                    <th scope="col">Número</th>
+                    <th scope="col">Complemento</th>
+                    <th scope="col">Bairro</th>
+                    <th scope="col">Municipio</th>
+                    <th scope="col">UnidadeFederativa</th>
+
+
+                    <th scope="col">Dt.Inclusão</th>
+                    <th scope="col">Dt.Alteração</th>
+                    <th scope="col" class="fixed-header"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                @if(Model != null && Model.Any()){
+                    foreach(ClienteModel cliente in Model){
+                    <tr>
+                        <th scope="row">@cliente.Id</th>
+                            <td>@cliente.Codigo</td>
+                            <td>@cliente.NomeRazaoSocial</td>
+                            <td>@cliente.NomeAbreviadoFantasia</td>
+                            <td>@cliente.Email</td>
+                            <td>@cliente.Telefone</td>
+
+                            <td>@cliente.Tipo</td>
+                            <td>@cliente.CpfCnpj</td>
+                            <td>@cliente.RgIe</td>
+
+                            <td>@cliente.Cep</td>
+                            <td>@cliente.Logradouro</td>
+                            <td>@cliente.Numero</td>
+                            <td>@cliente.Complemento</td>
+                            <td>@cliente.Bairro</td>
+                            <td>@cliente.Municipio</td>
+                            <td>@cliente.UnidadeFederativa</td>
+
+                        <td>@cliente.Inclusao</td>
+                        <td>@cliente.Alteracao</td>
+
+                        <td class="fixed-column">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a role="button" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar" class="btn btn-outline-primary">Editar</a>
+                            <a role="button" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="ConfirmarExclusao" class="btn btn-outline-danger">Apagar</a>
+                        </div>
+                        </td>
+                    </tr>
+                    }
+                
+                }
+
+            
+
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
