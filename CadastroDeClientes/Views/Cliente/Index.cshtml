@@ -40,89 +40,90 @@
 
             
             <li>
-                <input type="checkbox" id="codigo" name="codigo" checked>
-                <label for="codigo">Código</label>
+                <input type="checkbox" id="CheckCodigo" name="Codigo" checked>
+                <label for="CheckCodigo">Código</label>
             </li>
 
             <li>
-                <input type="checkbox" id="NomeRazaoSocial" name="NomeRazaoSocial" checked>
-                <label for="NomeRazaoSocial">Nome/Razao Social</label>
+                <input type="checkbox" id="CheckTipo" name="Tipo" checked>
+                <label for="CheckTipo">Tipo</label>
             </li>
 
             <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
-            </li>
-            
-            <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
-            </li>
-            
-            <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
-            </li>
-            
-            <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
-            </li>
-            
-            <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
-            </li>
-            
-            <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
-            </li>
-            
-            <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
-            </li>
-            
-            <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
+                <input type="checkbox" id="CheckCpfCnpj" name="CpfCnpj" checked>
+                <label for="CheckCpfCnpj">CPF/CNPJ</label>
             </li>
 
             <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
-            </li>
-            
-            <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
+                <input type="checkbox" id="CheckRgIe" name="RgIe" checked>
+                <label for="CheckRgIe">RG/IE</label>
             </li>
 
             <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
+                <input type="checkbox" id="CheckNomeRazaoSocial" name="NomeRazaoSocial" checked>
+                <label for="CheckNomeRazaoSocial">Nome/Razão Social</label>
             </li>
 
             <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
+                <input type="checkbox" id="CheckNomeAbreviadoFantasia" name="NomeAbreviadoFantasia" checked>
+                <label for="CheckNomeAbreviadoFantasia">Nome Abreviado/Fantasia</label>
             </li>
 
             <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
-            </li>
-            
-            <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
+                <input type="checkbox" id="CheckCep" name="Cep" checked>
+                <label for="CheckCep">CEP</label>
             </li>
 
             <li>
-                <input type="checkbox" id="campo1" name="campo1" checked>
-                <label for="campo1">campo1</label>
+                <input type="checkbox" id="CheckLogradouro" name="Logradouro" checked>
+                <label for="CheckLogradouro">Logradouro</label>
             </li>
+
+            <li>
+                <input type="checkbox" id="CheckNumero" name="Numero" checked>
+                <label for="CheckNumero">Número</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="CheckComplemento" name="Complemento" checked>
+                <label for="CheckComplemento">Complemento</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="CheckBairro" name="Bairro" checked>
+                <label for="CheckBairro">Bairro</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="CheckMunicipio" name="Municipio" checked>
+                <label for="CheckMunicipio">Município</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="CheckUnidadeFederativa" name="UnidadeFederativa" checked>
+                <label for="CheckUnidadeFederativa">Unidade Federativa</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="CheckEmail" name="Email" checked>
+                <label for="CheckEmail">E-mail</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="CheckTelefone" name="Telefone" checked>
+                <label for="CheckTelefone">Telefone</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="CheckInclusao" name="Inclusao" checked>
+                <label for="CheckInclusao">Inclusão</label>
+            </li>
+
+            <li>
+                <input type="checkbox" id="CheckAlteracao" name="Alteracao" checked>
+                <label for="CheckAlteracao">Alteração</label>
+            </li>
+
 
         </ul>
     </div>
@@ -170,6 +171,7 @@
                     foreach(ClienteModel cliente in Model){
                     <tr>
                         <th scope="row">@cliente.Id</th>
+
                             <td>@cliente.Codigo</td>
                             <td>@cliente.NomeRazaoSocial</td>
                             <td>@cliente.NomeAbreviadoFantasia</td>
