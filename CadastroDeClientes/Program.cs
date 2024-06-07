@@ -13,6 +13,13 @@ builder.Services.AddRazorPages()
 
 builder.Services.AddHttpClient();
 
+//swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api Clientes", Version = "v1" });
+});
+
 //Conexão com banco
 
 var provider = builder.Services.BuildServiceProvider();
@@ -22,13 +29,7 @@ builder.Services.AddDbContext<BancoContext>(item => item.UseSqlServer(configurat
 builder.Services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
 
 
-//swagger
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-object value = builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api Clientes", Version = "v1" });
-});
+
 
 
 var app = builder.Build();
@@ -43,8 +44,26 @@ if (!app.Environment.IsDevelopment())
     //swagger
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("c", "API Clientes v1"));
+
+
+    app.MapSwagger().RequireAuthorization();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Clientes v1"));
+
+    app.Use(async (context, next) =>
+    {
+        if (context.Request.Path == "/swagger")
+        {
+            context.Response.Redirect("/swagger/index.html");
+            return;
+
+        }
+        await next();
+
+    });
 }
+
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

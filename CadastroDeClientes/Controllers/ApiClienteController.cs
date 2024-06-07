@@ -43,25 +43,43 @@ namespace CadastroDeClientes.Controllers
 
         }
 
-            /*
+           
             
         [HttpGet("codigo/{codigo}")]
-        public ClienteModel BuscarPorCodigo(String codigo)
+        public ActionResult<ClienteModel> BuscarPorCodigo(String codigo)
         {
+            var cliente = _clienteRepositorio.BuscarPorCodigo(codigo);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+            return Ok(cliente);
 
         }
-        [HttpGet("cpf-cnpj/{documento}")]
-        public ClienteModel BuscarPorDocumento(String documento)
+        [HttpGet("cpf-cnpj/{cc}")]
+        public ActionResult<ClienteModel> BuscarPorDocumento(String documento)
         {
+            var cliente = _clienteRepositorio.BuscarPorDocumento(documento);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+            return Ok(cliente);
 
         }
         [HttpGet("nome-razao-social/{nomeRazaoSocial}")]
-        public ClienteModel BuscarPorNomeRazaoSocial(String nomeRazaoSocial)
+        public ActionResult<ClienteModel> BuscarPorNomeRazaoSocial(String nomeRazaoSocial)
         {
+            var cliente = _clienteRepositorio.BuscarPorDocumento(nomeRazaoSocial);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+            return Ok(cliente);
 
         }
 
-            */
+           
             [HttpPost("")]
             public ActionResult<ClienteModel> Criar(ClienteModel cliente)
             {

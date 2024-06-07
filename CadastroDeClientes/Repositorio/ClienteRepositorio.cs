@@ -25,6 +25,21 @@ namespace CadastroDeClientes.Repositorio
             ClienteModel cliente = _bancoContext.Clientes.FirstOrDefault(x => x.Id == id);
             return cliente;
         }
+        public ClienteModel BuscarPorCodigo(string codigo)
+        {
+            return _bancoContext.Clientes.FirstOrDefault(c => c.Codigo == codigo);
+        }
+
+        public ClienteModel BuscarPorDocumento(string documento)
+        {
+            return _bancoContext.Clientes.FirstOrDefault(c => c.CpfCnpj == documento);
+        }
+
+
+        public ClienteModel BuscarPorNomeRazaoSocial(string nomeRazaoSocial)
+        {
+            return _bancoContext.Clientes.FirstOrDefault(c => c.NomeRazaoSocial == nomeRazaoSocial);
+        }
 
         public List<ClienteModel> BuscarTodos()
         {
